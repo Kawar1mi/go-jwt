@@ -1,0 +1,24 @@
+version: '24.0.6'
+
+services:
+  db:
+    image: postgres:16
+    container_name: jwt_gorm_postgres
+    restart: no
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jwt_gorm
+      PGDATA: /var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    container_name: jwt_gorm_pgadmin
+    image: dpage/pgadmin4:latest
+    restart: no
+    environment:
+      PGADMIN_DEFAULT_EMAIL: noemail@noemail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
